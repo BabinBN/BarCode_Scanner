@@ -1,6 +1,15 @@
 <mvc:View controllerName="barcode.controller.barcode"
+    xmlns:ndc="sap.ndc"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-    </Page>
+     <HBox id="e" class="sapUiTinyMarginTop">
+            <!-- <CheckBox id="keepCameraScanOne" text="Keep Camera Scan One" selected="{/keepCameraScanOne}" class="sapUiTinyMarginEnd" /> -->
+        <Input id="sampleBarcodeScannerResultOne" type="Text" placeholder="Enter Result One" width="20rem" />
+        <ndc:BarcodeScannerButton id="sampleBarcodeScannerButtonZebraOne" scanSuccess="onScanSuccessOne" scanFail="onScanErrorOne" inputLiveUpdate="onScanLiveUpdate" dialogTitle="Barcode Scanner Button1 Sample" keepCameraScan="{/keepCameraScanOne}" class="sampleBarcodeScannerButtonWithZebraEB" />
+         <Button id="clearButtonOne" text="Clear" press="getdata" class="sapUiTinyMarginBegin" />
+        
+    </HBox>
+     </Page>
 </mvc:View>
