@@ -1,15 +1,74 @@
 <mvc:View controllerName="barcode.controller.barcode"
-    xmlns:ndc="sap.ndc"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
     xmlns:core="sap.ui.core"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-     <HBox id="e" class="sapUiTinyMarginTop">
-            <!-- <CheckBox id="keepCameraScanOne" text="Keep Camera Scan One" selected="{/keepCameraScanOne}" class="sapUiTinyMarginEnd" /> -->
-        <Input id="sampleBarcodeScannerResultOne" type="Text" placeholder="Enter Result One" width="20rem" />
-        <ndc:BarcodeScannerButton id="sampleBarcodeScannerButtonZebraOne" scanSuccess="onScanSuccessOne" scanFail="onScanErrorOne" inputLiveUpdate="onScanLiveUpdate" dialogTitle="Barcode Scanner Button1 Sample" keepCameraScan="{/keepCameraScanOne}" class="sampleBarcodeScannerButtonWithZebraEB" />
-         <Button id="clearButtonOne" text="Clear" press="getdata" class="sapUiTinyMarginBegin" />
-        
-    </HBox>
-     </Page>
+    xmlns:unified="sap.ui.unified" displayBlock="true">
+    <App>
+  <Page title="Delivery Note Tracking" showNavButton="true" navButtonPress="onNavBack">
+                <content>
+                    <uxap:ObjectPageLayout showTitleInHeaderContent="true" useIconTabBar="false">
+                        <uxap:headerTitle>
+                            <uxap:ObjectPageDynamicHeaderTitle>
+                                <uxap:heading>
+                                    <Title text="Delivery Note Tracking"/>
+                                </uxap:heading>
+                            </uxap:ObjectPageDynamicHeaderTitle>
+                        </uxap:headerTitle>
+                        <uxap:sections>
+                            <uxap:ObjectPageSection title="Phase 1 – Outbound Delivery">
+                                <uxap:subSections>
+                                    <uxap:ObjectPageSubSection>
+                                        <form:SimpleForm editable="true" layout="ResponsiveGridLayout" columnsM="1" columnsL="2">
+                                            <Label text="Delivery Note Barcode"/>
+                                            <HBox>
+                                                <Input id="deliveryNoteInput" width="100%" editable="false"/>
+                                                <Button icon="sap-icon://bar-code" press="onScanDelivery"/>
+                                            </HBox>
+                                            <Label text="Driver Name"/>
+                                            <Select id="driverSelect" change="onDriverChange">
+                                                <core:Item key="1" text="Driver 1"/>
+                                                <core:Item key="2" text="Driver 2"/>
+                                            </Select>
+                                            <Label text="Driver Mobile"/>
+                                            <Input id="driverMobile" editable="false"/>
+                                            <Label text="Delivery Location"/>
+                                            <Select id="locationSelect">
+                                                <core:Item key="DXB" text="Dubai"/>
+                                                <core:Item key="AUH" text="Abu Dhabi"/>
+                                                <core:Item key="SHJ" text="Sharjah"/>
+                                            </Select>
+                                            <Label text="Upload Signed Document"/>
+                                            <unified:FileUploader id="signedFileUploader" width="100%" buttonText="Browse File"/>
+                                            <Button text="Attach Upload" type="Emphasized" press="onAttachSignedDN" width="20%"/>
+                                             <Label text=""/>
+                                                 <Button text="Confirm Delivery" type="Emphasized" press="onConfirmDelivery" class="sapUiTinyMarginTop" width="20%"/>
+                                     
+                                        </form:SimpleForm>
+                                       
+                                    </uxap:ObjectPageSubSection>
+                                </uxap:subSections>
+                            </uxap:ObjectPageSection>
+                            <!-- <uxap:ObjectPageSection title="Phase 2 – Signed Delivery Note Return">
+                                <uxap:subSections>
+                                    <uxap:ObjectPageSubSection>
+                                        <form:SimpleForm editable="true" layout="ResponsiveGridLayout" columnsM="1" columnsL="2">
+                                            <Label text="Signed Delivery Note Barcode"/>
+                                            <HBox>
+                                                <Input id="signedDNInput" editable="false" width="100%"/>
+                                                <Button icon="sap-icon://bar-code" press="onScanSignedDN"/>
+                                            </HBox>
+                                            <Label text="Upload Signed Document"/>
+                                            <unified:FileUploader id="signedFileUploader" width="100%" buttonText="Browse File"/>
+                                        </form:SimpleForm>
+                                        <Button text="Attach to Invoice  Update Status" type="Emphasized" press="onAttachSignedDN" class="sapUiMediumMarginTop"/>
+                                    </uxap:ObjectPageSubSection>
+                                </uxap:subSections>
+                            </uxap:ObjectPageSection> -->
+                        </uxap:sections>
+                    </uxap:ObjectPageLayout>
+                </content>
+            </Page>
+    </App>
 </mvc:View>

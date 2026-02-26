@@ -1,0 +1,45 @@
+<mvc:View controllerName="barcode.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified" displayBlock="true">
+    <VBox justifyContent="Center" alignItems="Center" class="sapUiContentPadding sapUiLargeMarginTop" height="75%">
+
+        <Panel class="shadow-lg sapUiLargeMarginTop" height="100%" width="400px">
+            <VBox class="sapUiMediumMargin " id="load" width="300px">
+                <HBox justifyContent="Center">
+                    <Image src="Images/logo.png" />
+                </HBox>
+
+                <!-- <HBox justifyContent="Center" class="sapUiMediumMarginBottom">
+                    <Title text="{i18n>l_signacc}" level="H5" />
+                </HBox> -->
+                <Label text="{i18n>l_UserName}" labelFor="userName"/>
+
+                <Input id="userName" type="Text" placeholder="{i18n>l_EnterUsr}" required="true" value="{loginModel>/login/userName}" valueState="{= ${loginModel>/login/userNameError} ? 'Error' : 'None' }" valueStateText="{loginModel>/login/userNameErrorText}" liveChange=".onUserNameInputLiveChange" visible="{}" />
+
+                <Label text="{i18n>l_password}" labelFor="passwordInput" class="sapUiSmallMarginTop"/>
+                <Input id="passwordInput" type="Password" placeholder="{i18n>l_Entpassword}" required="true" value="{loginModel>/login/password}" valueState="{= ${loginModel>/login/passwordError} ? 'Error' : 'None' }" valueStateText="{loginModel>/login/passwordErrorText}"/>
+                <Label text="{i18n>l_company}" labelFor="companyInput" class="sapUiSmallMarginTop"/>
+                <ComboBox id="companyInput" selectedKey="{loginModel>/login/CompanyDB}" items="{CompanyDBmdl>/}" required="true" width="100%"  valueState="{= ${loginModel>/login/companyDBError} ? 'Error' : 'None' }" valueStateText="{loginModel>/login/companyDBErrorText}">
+                    <core:Item key="{CompanyDBmdl>Code}" text="{CompanyDBmdl>Name}"/>
+                </ComboBox>
+
+                <!-- <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginTop">
+                    <CheckBox text="{i18n>l_loggedin}" />
+                    <Link text="{i18n>l_forgotpassword}" press=".onForgotPassword" />
+                </HBox> -->
+
+                <Button text="{i18n>l_login}" type="Emphasized" class="sapUiMediumMarginTop" press=".onLogin" width="100%"/>
+
+                <!-- <HBox justifyContent="Center" class="sapUiSmallMarginTop">
+                    <Text text="{i18n>l_donthaveacc}" />
+                    <Link text="{i18n>l_signup}" class="sapUiTinyMarginBegin" press=".onSignUp"/>
+                </HBox> -->
+
+            </VBox>
+        </Panel>
+    </VBox>
+</mvc:View>

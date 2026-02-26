@@ -63,6 +63,10 @@
           "bundleName": "barcode.i18n.i18n"
         }
       },
+       "CompanyDBmdl": {
+            "type": "sap.ui.model.json.JSONModel",
+            "uri": "utils/CompanyDB.json"
+        },
       "": {
         "dataSource": "mainService",
         "preload": true,
@@ -95,9 +99,16 @@
       "routes": [
         {
           "name": "Routebarcode",
-          "pattern": ":?query:",
+          "pattern": "barcode",
           "target": [
             "Targetbarcode"
+          ]
+        },
+        {
+          "name": "RouteLogin",
+          "pattern": "",
+          "target": [
+            "TargetLogin"
           ]
         }
       ],
@@ -105,6 +116,10 @@
         "Targetbarcode": {
           "id": "barcode",
           "name": "barcode"
+        },
+        "TargetLogin": {
+          "id": "Login",
+          "name": "Login"
         }
       }
     },
